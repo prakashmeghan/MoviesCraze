@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="movie_thum_h">100dp</dimen>
+    <dimen name="movie_thum_w">150dp</dimen>
+    <dimen name="movie_detail_w">185dp</dimen>
+    <dimen name="movie_title_text_size">16sp</dimen>
+    <dimen name="detail_text_l_padding">10dp</dimen>
+</resources>
