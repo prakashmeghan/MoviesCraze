@@ -1,8 +1,5 @@
 package com.prakashmeghani.moviescraze.Util;
 
-import android.content.Context;
-
-
 import com.prakashmeghani.moviescraze.model.Movie;
 
 import org.json.JSONArray;
@@ -13,11 +10,10 @@ import java.util.ArrayList;
 
 public final class OpenMovieJsonUtils {
 
-    public static ArrayList<Movie> getMovieFromJson(Context context, String movieJsonStr)
+    public static ArrayList<Movie> getMovieFromJson(String movieJsonStr)
             throws JSONException {
 
-        ArrayList<Movie> parsedMovieData = null;
-        parsedMovieData = new ArrayList<Movie>();
+        ArrayList<Movie> parsedMovieData = new ArrayList<Movie>();
 
         JSONObject movieJson = new JSONObject(movieJsonStr);
 

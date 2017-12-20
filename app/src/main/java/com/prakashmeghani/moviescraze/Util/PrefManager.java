@@ -11,9 +11,9 @@ import android.util.Log;
 public class PrefManager {
     private static final String TAG = "PrefsManager";
     // Shared Preferences reference
-    SharedPreferences mPreference;
+    private SharedPreferences mPreference;
     // Editor for Shared preferences
-    SharedPreferences.Editor mEditor;
+    private SharedPreferences.Editor mEditor;
     // Context
     private Context _context;
     // Sharedpref file name
@@ -33,8 +33,9 @@ public class PrefManager {
 
 
     public void setUrlType(int urlType) {
-        mPreference.edit()
+        mEditor
                 .putInt(Constant.PREF_URL_TYPE, urlType).apply();
+        mEditor.commit();
     }
 
     public int getUrlType() {

@@ -25,8 +25,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements MovieAdapter.MovieAdapterOnClickHandler {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-
     private RecyclerView mRecyclerView;
     private MovieAdapter movieAdapter;
 
@@ -43,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
         initObjects();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_forecast);
-        mErrorMessageDisplay = (TextView) findViewById(R.id.tv_error_message_display);
+        mRecyclerView = findViewById(R.id.recyclerview_forecast);
+        mErrorMessageDisplay = findViewById(R.id.tv_error_message_display);
 
         GridLayoutManager gridLayoutManager
                 = new GridLayoutManager(this, 2);
@@ -57,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
         mRecyclerView.setAdapter(movieAdapter);
 
-        mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
+        mLoadingIndicator = findViewById(R.id.pb_loading_indicator);
 
         loadMovieData(prefManager.getUrlType());
     }
@@ -116,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                         .getResponseFromHttpUrl(movieRequestUrl);
 
                 ArrayList<Movie> simpleJsonMovieData = OpenMovieJsonUtils
-                        .getMovieFromJson(MainActivity.this, jsonMovieResponse);
+                        .getMovieFromJson(jsonMovieResponse);
 
                 return simpleJsonMovieData;
 

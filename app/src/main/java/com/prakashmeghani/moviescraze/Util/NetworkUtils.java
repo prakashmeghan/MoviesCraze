@@ -11,8 +11,6 @@ import java.util.Scanner;
 
 public final class NetworkUtils {
 
-    private static final String TAG = NetworkUtils.class.getSimpleName();
-
     public static URL buildUrl(int urlType) {
         String buildUrl = "";
         if (urlType == 0)

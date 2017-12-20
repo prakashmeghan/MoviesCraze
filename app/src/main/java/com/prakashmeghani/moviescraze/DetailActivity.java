@@ -39,17 +39,17 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void findViewByIds() {
-        tvReleaseDate = (TextView) findViewById(R.id.tv_release_date);
-        tvOverview = (TextView) findViewById(R.id.tv_overview);
-        tvRating = (TextView) findViewById(R.id.tv_rating);
-        tvTitle = (TextView) findViewById(R.id.tv_title);
-        ivDetail = (ImageView) findViewById(R.id.iv_movie_detail);
+        tvReleaseDate = findViewById(R.id.tv_release_date);
+        tvOverview = findViewById(R.id.tv_overview);
+        tvRating = findViewById(R.id.tv_rating);
+        tvTitle = findViewById(R.id.tv_title);
+        ivDetail = findViewById(R.id.iv_movie_detail);
     }
 
     private void getDataFromIntent() {
         Intent i = getIntent();
         if (i != null) {
-            movie = (Movie) i.getParcelableExtra(Constant.EXTRA_MOVIE);
+            movie = i.getParcelableExtra(Constant.EXTRA_MOVIE);
         }
     }
 }
