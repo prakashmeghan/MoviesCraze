@@ -18,12 +18,15 @@ import com.prakashmeghani.moviescraze.Util.NetworkUtils;
 import com.prakashmeghani.moviescraze.Util.OpenMovieJsonUtils;
 import com.prakashmeghani.moviescraze.Util.PrefManager;
 import com.prakashmeghani.moviescraze.adapter.MovieAdapter;
+import com.prakashmeghani.moviescraze.asynctask.FetchMovieTask;
+import com.prakashmeghani.moviescraze.model.AsyncTaskCompleteListener;
 import com.prakashmeghani.moviescraze.model.Movie;
 
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements MovieAdapter.MovieAdapterOnClickHandler {
+public class MainActivity extends AppCompatActivity implements
+        MovieAdapter.MovieAdapterOnClickHandler {
 
     private RecyclerView mRecyclerView;
     private MovieAdapter movieAdapter;
@@ -57,7 +60,12 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
         mLoadingIndicator = findViewById(R.id.pb_loading_indicator);
 
-        loadMovieData(prefManager.getUrlType());
+        if(NetworkUtils.isInternetWorking(MainActivity.this)){
+            loadMovieData(prefManager.getUrlType());
+        }else {
+            showErrorMessage(getString(R.string.internet_not_working));
+        }
+
     }
 
     private void initObjects() {
@@ -67,7 +75,9 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     private void loadMovieData(int urlType) {
         showMovieDataView();
 
-        new FetchMovieTask().execute(urlType);
+        mLoadingIndicator.setVisibility(View.VISIBLE);
+
+        new FetchMovieTask(MainActivity.this, new FetchMovieCompleteListener()).execute(urlType);
     }
 
     private void showMovieDataView() {
@@ -91,48 +101,17 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     }
 
-    public class FetchMovieTask extends AsyncTask<Integer, Void, ArrayList<Movie>> {
+    public class FetchMovieCompleteListener implements AsyncTaskCompleteListener<ArrayList<Movie>>{
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            mLoadingIndicator.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected ArrayList<Movie> doInBackground(Integer... params) {
-
-            if (params.length == 0) {
-                return null;
-            }
-
-            int urlType = params[0];
-            URL movieRequestUrl = NetworkUtils.buildUrl(urlType);
-
-            try {
-                String jsonMovieResponse = NetworkUtils
-                        .getResponseFromHttpUrl(movieRequestUrl);
-
-                ArrayList<Movie> simpleJsonMovieData = OpenMovieJsonUtils
-                        .getMovieFromJson(jsonMovieResponse);
-
-                return simpleJsonMovieData;
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<Movie> movieData) {
+        public void onTaskComplete(ArrayList<Movie> result) {
             mLoadingIndicator.setVisibility(View.INVISIBLE);
-            if (movieData != null) {
-                if (movieData.get(0).getStatusMessage() != null) {
-                    showErrorMessage(movieData.get(0).getStatusMessage());
+            if (result != null) {
+                if (result.get(0).getStatusMessage() != null) {
+                    showErrorMessage(result.get(0).getStatusMessage());
                 } else {
                     showMovieDataView();
-                    movieAdapter.setMovieData(movieData);
+                    movieAdapter.setMovieData(result);
                 }
             } else {
                 showErrorMessage(null);

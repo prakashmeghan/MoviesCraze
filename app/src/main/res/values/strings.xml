@@ -12,4 +12,5 @@
     <string name="rating">Rating</string>
     <string name="overview">Overview</string>
     <string name="poster">Poster</string>
+    <string name="internet_not_working">Internet is not working on this device.</string>
 </resources>

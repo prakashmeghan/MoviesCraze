@@ -1,5 +1,8 @@
 package com.prakashmeghani.moviescraze.Util;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 
 import java.io.IOException;
@@ -10,6 +13,16 @@ import java.net.URL;
 import java.util.Scanner;
 
 public final class NetworkUtils {
+
+    public static boolean isInternetWorking(Context context){
+        ConnectivityManager cm =
+                (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        return isConnected;
+    }
 
     public static URL buildUrl(int urlType) {
         String buildUrl = "";

@@ -1,72 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/detail_text_l_padding"
-    tools:context="com.prakashmeghani.moviescraze.DetailActivity">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/iv_movie_detail"
-        android:layout_width="@dimen/movie_detail_w"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/poster"
-        android:scaleType="center" />
+        android:padding="@dimen/detail_text_l_padding"
+        tools:context="com.prakashmeghani.moviescraze.DetailActivity">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/iv_movie_detail"
-        android:layout_toRightOf="@+id/iv_movie_detail"
-        android:layout_toEndOf="@+id/iv_movie_detail"
-        android:paddingEnd="@dimen/detail_text_l_padding"
-        android:paddingLeft="@dimen/detail_text_l_padding"
-        android:paddingRight="@dimen/detail_text_l_padding"
-        android:paddingStart="@dimen/detail_text_l_padding"
-        android:text="@string/title" />
+        <ImageView
+            android:id="@+id/iv_movie_detail"
+            android:layout_width="@dimen/movie_detail_w"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/poster"
+            android:scaleType="center" />
 
-    <TextView
-        android:id="@+id/tv_release_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_title"
-        android:layout_toRightOf="@+id/iv_movie_detail"
-        android:layout_toEndOf="@+id/iv_movie_detail"
-        android:paddingEnd="@dimen/detail_text_l_padding"
-        android:paddingLeft="@dimen/detail_text_l_padding"
-        android:paddingRight="@dimen/detail_text_l_padding"
-        android:paddingStart="@dimen/detail_text_l_padding"
-        android:paddingTop="@dimen/detail_text_l_padding"
-        android:text="@string/release_date" />
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_movie_detail"
+            android:layout_toEndOf="@+id/iv_movie_detail"
+            android:layout_toRightOf="@+id/iv_movie_detail"
+            android:paddingEnd="@dimen/detail_text_l_padding"
+            android:paddingLeft="@dimen/detail_text_l_padding"
+            android:paddingRight="@dimen/detail_text_l_padding"
+            android:paddingStart="@dimen/detail_text_l_padding"
+            android:text="@string/title" />
 
-    <TextView
-        android:id="@+id/tv_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_release_date"
-        android:layout_toRightOf="@+id/iv_movie_detail"
-        android:layout_toEndOf="@+id/iv_movie_detail"
-        android:paddingEnd="@dimen/detail_text_l_padding"
-        android:paddingLeft="@dimen/detail_text_l_padding"
-        android:paddingRight="@dimen/detail_text_l_padding"
-        android:paddingStart="@dimen/detail_text_l_padding"
-        android:paddingTop="@dimen/detail_text_l_padding"
-        android:text="@string/rating" />
+        <TextView
+            android:id="@+id/tv_release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_toEndOf="@+id/iv_movie_detail"
+            android:layout_toRightOf="@+id/iv_movie_detail"
+            android:paddingEnd="@dimen/detail_text_l_padding"
+            android:paddingLeft="@dimen/detail_text_l_padding"
+            android:paddingRight="@dimen/detail_text_l_padding"
+            android:paddingStart="@dimen/detail_text_l_padding"
+            android:paddingTop="@dimen/detail_text_l_padding"
+            android:text="@string/release_date" />
 
-    <TextView
-        android:id="@+id/tv_overview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_rating"
-        android:layout_toRightOf="@+id/iv_movie_detail"
-        android:layout_toEndOf="@+id/iv_movie_detail"
-        android:paddingEnd="@dimen/detail_text_l_padding"
-        android:paddingLeft="@dimen/detail_text_l_padding"
-        android:paddingRight="@dimen/detail_text_l_padding"
-        android:paddingStart="@dimen/detail_text_l_padding"
-        android:paddingTop="@dimen/detail_text_l_padding"
-        android:text="@string/overview" />
+        <TextView
+            android:id="@+id/tv_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_release_date"
+            android:layout_toEndOf="@+id/iv_movie_detail"
+            android:layout_toRightOf="@+id/iv_movie_detail"
+            android:paddingEnd="@dimen/detail_text_l_padding"
+            android:paddingLeft="@dimen/detail_text_l_padding"
+            android:paddingRight="@dimen/detail_text_l_padding"
+            android:paddingStart="@dimen/detail_text_l_padding"
+            android:paddingTop="@dimen/detail_text_l_padding"
+            android:text="@string/rating" />
 
-
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tv_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_rating"
+            android:layout_toEndOf="@+id/iv_movie_detail"
+            android:layout_toRightOf="@+id/iv_movie_detail"
+            android:paddingEnd="@dimen/detail_text_l_padding"
+            android:paddingLeft="@dimen/detail_text_l_padding"
+            android:paddingRight="@dimen/detail_text_l_padding"
+            android:paddingStart="@dimen/detail_text_l_padding"
+            android:paddingTop="@dimen/detail_text_l_padding"
+            android:text="@string/overview" />
+    </RelativeLayout>
+</ScrollView>

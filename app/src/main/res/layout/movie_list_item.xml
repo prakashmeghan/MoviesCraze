@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:scaleType="center"
         android:layout_gravity="center"
-        android:contentDescription="@string/poster"/>
+        android:contentDescription="@string/poster"
+        android:adjustViewBounds="true"/>
 
     <TextView
         android:id="@+id/tv_movie"
